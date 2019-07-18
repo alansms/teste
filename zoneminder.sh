@@ -7,8 +7,8 @@
 # Data de criação: 02/12/2018
 # Data de atualização: 10/02/2018
 # Versão: 0.06
-# Testado e homologado para a versão do Ubuntu Server 19.04.x LTS x64
-# Kernel >= 5.0 x
+# Testado e homologado para a versão do Ubuntu Server 18.04.x LTS x64
+# Kernel >= 4.15.x
 #
 # ZoneMinder é um sistema de CFTV (Circuito Fechado de televisão) Open Source, desenvolvido para sistemas 
 # operacionais Linux. Ele é liberado sob os termos da GNU General Public License (GPL). Os usuários 
@@ -23,8 +23,8 @@
 #
 # Site Oficial do ZoneMinder: https://zoneminder.com/
 #
-# Vídeo de instalação do GNU/Linux Ubuntu Server 19.04.x LTS: https://www.youtube.com/watch?v=zDdCrqNhIXI
-# Vídeo de instalação do LAMP Server no GNU/Linux Ubuntu Server 19.04.x LTS: https://www.youtube.com/watch?v=6EFUu-I3u4s
+# Vídeo de instalação do GNU/Linux Ubuntu Server 18.04.x LTS: https://www.youtube.com/watch?v=zDdCrqNhIXI
+# Vídeo de instalação do LAMP Server no GNU/Linux Ubuntu Server 18.04.x LTS: https://www.youtube.com/watch?v=6EFUu-I3u4s
 #
 # Variável da Data Inicial para calcular o tempo de execução do script (VARIÁVEL MELHORADA)
 # opção do comando date: +%T (Time)
@@ -53,17 +53,17 @@ FLUSH="FLUSH PRIVILEGES;"
 # Declarando a variável de PPA do ZoneMinder
 ZONEMINDER="ppa:iconnor/zoneminder-master"
 #
-# Verificando se o usuário e Root, Distribuição e >=19.04 e o Kernel >=5.0 <IF MELHORADO)
+# Verificando se o usuário e Root, Distribuição e >=18.04 e o Kernel >=4.15 <IF MELHORADO)
 # && = operador lógico AND, == comparação de string, exit 1 = A maioria dos erros comuns na execução
 clear
-if [ "$USUARIO" == "0" ] && [ "$UBUNTU" == "19.04" ] && [ "$KERNEL" == "5.0" ]
+if [ "$USUARIO" == "0" ] && [ "$UBUNTU" == "18.04" ] && [ "$KERNEL" == "4.15" ]
 	then
 		echo -e "O usuário e Root, continuando com o script..."
-		echo -e "Distribuição e >=19.04.x, continuando com o script..."
-		echo -e "Kernel e >= 5.0, continuando com o script..."
+		echo -e "Distribuição e >=18.04.x, continuando com o script..."
+		echo -e "Kernel e >= 4.15, continuando com o script..."
 		sleep 5
 	else
-		echo -e "Usuário não e Root ($USUARIO) ou Distribuição não e >=19.04.x ($UBUNTU) ou Kernel não e >=5.0 ($KERNEL)"
+		echo -e "Usuário não e Root ($USUARIO) ou Distribuição não e >=18.04.x ($UBUNTU) ou Kernel não e >=4.15 ($KERNEL)"
 		echo -e "Caso você não tenha executado o script com o comando: sudo -i"
 		echo -e "Execute novamente o script para verificar o ambiente."
 		exit 1
@@ -80,14 +80,14 @@ echo -n "Verificando as dependências, aguarde... "
 		[[ $deps -ne 1 ]] && echo "Dependências.: OK" || { echo -en "\nInstale as dependências acima e execute novamente este script\n";exit 1; }
 		sleep 5
 #		
-# Script de instalação do ZoneMinder no GNU/Linux Ubuntu Server 19.04.x
+# Script de instalação do ZoneMinder no GNU/Linux Ubuntu Server 18.04.x
 # opção do comando echo: -e (enable interpretation of backslash escapes), \n (new line)
 # opção do comando hostname: -I (all IP address)
 # opção do comando date: + (format), %d (day), %m (month), %Y (year 1970), %H (hour 24), %M (minute 60)
 echo -e "Início do script $0 em: `date +%d/%m/%Y-"("%H:%M")"`\n" &>> $LOG
 clear
 #
-echo -e "Instalação do ZoneMinder no GNU/Linux Ubuntu Server 19.04.x\n"
+echo -e "Instalação do ZoneMinder no GNU/Linux Ubuntu Server 18.04.x\n"
 echo -e "Após a instalação do ZoneMinder acessar a URL: http://`hostname -I`/zm/\n"
 echo -e "Aguarde, esse processo demora um pouco dependendo do seu Link de Internet..."
 sleep 5
@@ -157,7 +157,7 @@ echo -e "Editando as Configurações do PHP, perssione <Enter> para continuar"
 	#[Date]
 	#date.timezone = America/Sao_Paulo
 	read
-	nano /etc/apache2/php.ini
+	nano /etc/php/7.2/apache2/php.ini
 echo -e "Arquivo do PHP editado com sucesso!!!, continuando com o script..."
 sleep 5
 echo

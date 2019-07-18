@@ -146,7 +146,7 @@ echo -e "Editando as Configurações do Servidor de MySQL, perssione <Enter> par
 	#[mysqld]
 	#sql_mode = NO_ENGINE_SUBSTITUTION
 	read
-	vim /etc/mysql/mysql.conf.d/mysqld.cnf
+	nano /etc/mysql/mysql.conf.d/mysqld.cnf
 	sudo service mysql restart &>> $LOG
 echo -e "Banco de Dados editado com sucesso!!!, continuando com o script..."
 sleep 5
